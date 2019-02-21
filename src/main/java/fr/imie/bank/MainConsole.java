@@ -155,7 +155,8 @@ public class MainConsole {
 					System.out.println("Vous avez été redirigé vers le menu principal");
 					System.out.println(" ");
 				} else {
-					System.out.println("Veuillez entrer une donnée valide ! Vous avez été redirigé vers le menu principal");
+					System.out.println(
+							"Veuillez entrer une donnée valide ! Vous avez été redirigé vers le menu principal");
 				}
 
 			} else if (chooseMenu1 == 3) {
@@ -324,9 +325,9 @@ public class MainConsole {
 						System.out.println("Votre fichier a été créer !");
 						System.out.println(" ");
 					}
-				} else if (chooseExportList1 != 2 && chooseExportList1 != 1){
+				} else if (chooseExportList1 != 2 && chooseExportList1 != 1) {
 					System.out.println("Veuillez entrer un choix valide !");
-				} 
+				}
 			} else {
 				System.out.println("Veuillez entrer un choix valide !");
 			}
