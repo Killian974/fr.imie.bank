@@ -12,6 +12,7 @@ import fr.imie.bank.model.Person;
 public class MainConsole {
 
 	public static void menu() {
+		System.out.println(" ");
 		System.out.println("0) Quitter l'application");
 		System.out.println("1) Afficher la liste de contact");
 		System.out.println("2) Ajouter un contact");
@@ -71,7 +72,7 @@ public class MainConsole {
 
 			String chooseMenu = scanner.nextLine();
 			int chooseMenu1 = Integer.parseInt(chooseMenu);
-
+			
 			if (chooseMenu1 == 0) {
 				System.out.println(" ");
 				System.out.println("Vous avez quitté le programme, à bientôt !");
@@ -285,7 +286,8 @@ public class MainConsole {
 					}
 				}
 			} else if (chooseMenu1 == 5) {
-				System.out.println("Voulez vous voir la liste des contacts ? ");
+				System.out.println(" ");
+				System.out.println("Voulez vous voir la liste des contacts avant d'exporter votre liste ? ");
 				System.out.println("1) Oui");
 				System.out.println("2) Non");
 				String chooseViewContact = scanner.nextLine();
@@ -294,28 +296,23 @@ public class MainConsole {
 					for (int i = 0; i < personnes.size(); i++) {
 						System.out.println("Contact n°" + i + personnes.get(i).toString());
 					}
-					returnMenu();
-					String chooseReturnMenu = scanner.nextLine();
-					int chooseReturnMenu1 = Integer.parseInt(chooseReturnMenu);
-					if (chooseReturnMenu1 == 2) {
-						System.out.println("Vous avez quitter le programme, à bientôt !");
-						System.out.println(" ");
-						break;
-					} else if (chooseReturnMenu1 != 1 && chooseReturnMenu1 != 2) {
-						System.out.println(
-								"La donnée saisie est invalide ! Vous allez être redirigé automatiquement vers le menu princiapal");
+				}
+				System.out.println(" ");
+				System.out.println("Voulez vous exporter votre liste de contact en fichier .csv ?");
+				System.out.println("1) Oui");
+				System.out.println("2) Non");
+				String chooseExportList = scanner.nextLine();
+				int chooseExportList1 = Integer.parseInt(chooseExportList);
+
+				if (chooseExportList1 == 1) {
+					FileWriter fileWriter = new FileWriter("MonFichier.csv", true);
+					for (int i = 0; i < personnes.size(); i++) {
+						fileWriter.append("aaaaaaaaaaaaaaaaa");
+						fileWriter.close();
+						System.out.println("Votre fichier a été créer !");
 						System.out.println(" ");
 					}
-				} else if (chooseViewContact1 == 2) {
-					System.out.println("Vous avez été redirigé vers le menu principal");
-					System.out.println(" ");
-				}
-				FileWriter fileWriter = new FileWriter("MonFichier.csv", true);
-				for (int i = 0; i < personnes.size(); i++) {
-					fileWriter.append("Compte,Prénom,Nom,Date,Email");
-					fileWriter.close();
-					System.out.println("Votre fichier a été creer !");
-					System.out.println(" ");
+
 				}
 			}
 		}
