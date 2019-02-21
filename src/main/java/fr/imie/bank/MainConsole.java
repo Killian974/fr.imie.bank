@@ -72,7 +72,7 @@ public class MainConsole {
 
 			String chooseMenu = scanner.nextLine();
 			int chooseMenu1 = Integer.parseInt(chooseMenu);
-			
+
 			if (chooseMenu1 == 0) {
 				System.out.println(" ");
 				System.out.println("Vous avez quitté le programme, à bientôt !");
@@ -99,7 +99,6 @@ public class MainConsole {
 				} else if (chooseReturnMenu1 != 1 && chooseReturnMenu1 != 2) {
 					System.out.println(
 							"La donnée saisie est invalide ! Vous allez être redirigé automatiquement vers le menu principal");
-					System.out.println(" ");
 				}
 
 			} else if (chooseMenu1 == 2) {
@@ -155,6 +154,8 @@ public class MainConsole {
 				else if (chooseViewContact1 == 2) {
 					System.out.println("Vous avez été redirigé vers le menu principal");
 					System.out.println(" ");
+				} else {
+					System.out.println("Veuillez entrer une donnée valide ! Vous avez été redirigé vers le menu principal");
 				}
 
 			} else if (chooseMenu1 == 3) {
@@ -166,81 +167,86 @@ public class MainConsole {
 				System.out.println("Veuillez saisir un le n° du contact que vous voulez modifier :");
 				String chooseContactModif = scanner.nextLine();
 				int chooseContactModif1 = Integer.parseInt(chooseContactModif);
-				// INSERER LIGNE PERMETTANT DE MODIFIER
+
+				if (chooseContactModif1 <= personnes.size()) {
+					// INSERER LIGNE PERMETTANT DE MODIFIER
 //				System.out.println("Service en cours de développement, veuillez réessayer ultériement.");
 //				System.out.println(" ");
 
-				menuModifContact();
-				String chooseModifContact = scanner.nextLine();
-				int chooseModifContact1 = Integer.parseInt(chooseModifContact);
+					menuModifContact();
+					String chooseModifContact = scanner.nextLine();
+					int chooseModifContact1 = Integer.parseInt(chooseModifContact);
 
-				if (chooseModifContact1 == 2) {
-					System.out.println("Veuillez entrer le nouveau prénom :");
-					String changeFirstname = scanner.nextLine();
-					personnes.get(chooseContactModif1).firstname = changeFirstname;
-					System.out.println("Le prénom a été changé !");
-					System.out.println(" ");
-				} else if (chooseModifContact1 == 1) {
-					System.out.println("Veuillez entrer le numéro de compte :");
-					String changeAcount = scanner.nextLine();
-					personnes.get(chooseContactModif1).lastname = changeAcount;
-					System.out.println("Le compte a été changé !");
-					System.out.println(" ");
-				} else if (chooseModifContact1 == 3) {
-					System.out.println("Veuillez entrer le nouveau nom :");
-					String changeLastname = scanner.nextLine();
-					personnes.get(chooseContactModif1).lastname = changeLastname;
-					System.out.println("Le nom a été changé !");
-					System.out.println(" ");
-				} else if (chooseModifContact1 == 4) {
-					System.out.println("Veuillez entrer la nouvelle date de naissance :");
-					String changeDateBirth = scanner.nextLine();
-					LocalDate changeDateBirth1 = LocalDate.parse(changeDateBirth,
-							DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-					personnes.get(chooseContactModif1).dateBirth = changeDateBirth1;
-					System.out.println("La date de naissance a été changé !");
-					System.out.println(" ");
-				} else if (chooseModifContact1 == 5) {
-					System.out.println("Veuillez entrer le nouvel email :");
-					String changeEmail = scanner.nextLine();
-					personnes.get(chooseContactModif1).email = changeEmail;
-					System.out.println("L'Email a été changé !");
-					System.out.println(" ");
-				}
-
-				System.out.println("Voulez vous voir la liste des contacts ? ");
-				System.out.println("1) Oui");
-				System.out.println("2) Non");
-				String chooseViewContact = scanner.nextLine();
-				int chooseViewContact1 = Integer.parseInt(chooseViewContact);
-
-				if (chooseViewContact1 == 1) {
-					for (int i = 0; i < personnes.size(); i++) {
-
-						System.out.println("Contact n°" + i + personnes.get(i).toString());
-					}
-
-					returnMenu();
-					String chooseReturnMenu = scanner.nextLine();
-					int chooseReturnMenu1 = Integer.parseInt(chooseReturnMenu);
-					if (chooseReturnMenu1 == 2) {
-						System.out.println("Vous avez quitter le programme, à bientôt !");
+					if (chooseModifContact1 == 2) {
+						System.out.println("Veuillez entrer le nouveau prénom :");
+						String changeFirstname = scanner.nextLine();
+						personnes.get(chooseContactModif1).firstname = changeFirstname;
+						System.out.println("Le prénom a été changé !");
 						System.out.println(" ");
-						break;
-					} else if (chooseReturnMenu1 != 1 && chooseReturnMenu1 != 2) {
-						System.out.println(
-								"La donnée saisie est invalide ! Vous allez être redirigé automatiquement vers le menu princiapal");
+					} else if (chooseModifContact1 == 1) {
+						System.out.println("Veuillez entrer le numéro de compte :");
+						String changeAcount = scanner.nextLine();
+						personnes.get(chooseContactModif1).lastname = changeAcount;
+						System.out.println("Le compte a été changé !");
+						System.out.println(" ");
+					} else if (chooseModifContact1 == 3) {
+						System.out.println("Veuillez entrer le nouveau nom :");
+						String changeLastname = scanner.nextLine();
+						personnes.get(chooseContactModif1).lastname = changeLastname;
+						System.out.println("Le nom a été changé !");
+						System.out.println(" ");
+					} else if (chooseModifContact1 == 4) {
+						System.out.println("Veuillez entrer la nouvelle date de naissance :");
+						String changeDateBirth = scanner.nextLine();
+						LocalDate changeDateBirth1 = LocalDate.parse(changeDateBirth,
+								DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+						personnes.get(chooseContactModif1).dateBirth = changeDateBirth1;
+						System.out.println("La date de naissance a été changé !");
+						System.out.println(" ");
+					} else if (chooseModifContact1 == 5) {
+						System.out.println("Veuillez entrer le nouvel email :");
+						String changeEmail = scanner.nextLine();
+						personnes.get(chooseContactModif1).email = changeEmail;
+						System.out.println("L'Email a été changé !");
 						System.out.println(" ");
 					}
 
-				} else if (chooseViewContact1 == 2) {
-					System.out.println("Vous avez été redirigé vers le menu principal");
-					System.out.println(" ");
-				}
+					System.out.println("Voulez vous voir la liste des contacts ? ");
+					System.out.println("1) Oui");
+					System.out.println("2) Non");
+					String chooseViewContact = scanner.nextLine();
+					int chooseViewContact1 = Integer.parseInt(chooseViewContact);
+
+					if (chooseViewContact1 == 1) {
+						for (int i = 0; i < personnes.size(); i++) {
+
+							System.out.println("Contact n°" + i + personnes.get(i).toString());
+						}
+
+						returnMenu();
+						String chooseReturnMenu = scanner.nextLine();
+						int chooseReturnMenu1 = Integer.parseInt(chooseReturnMenu);
+						if (chooseReturnMenu1 == 2) {
+							System.out.println("Vous avez quitter le programme, à bientôt !");
+							System.out.println(" ");
+							break;
+						} else if (chooseReturnMenu1 != 1 && chooseReturnMenu1 != 2) {
+							System.out.println(
+									"La donnée saisie est invalide ! Vous allez être redirigé automatiquement vers le menu princiapal");
+							System.out.println(" ");
+						}
+
+					} else if (chooseViewContact1 == 2) {
+						System.out.println("Vous avez été redirigé vers le menu principal");
+						System.out.println(" ");
+					}
 
 //				System.out.println(" ");
 //				System.out.println("Service en cours de développement, veuillez réessayer ultériement.");
 //				System.out.println(" ");
+				} else {
+					System.out.println("Veuillez entrer un numéro de contact valide !");
+				}
 			}
 
 			else if (chooseMenu1 == 4) {
@@ -252,39 +258,45 @@ public class MainConsole {
 				System.out.println("Veuillez saisir un le n° du contact que vous voulez supprimer :");
 				String chooseContactRemove = scanner.nextLine();
 				int chooseContactRemove1 = Integer.parseInt(chooseContactRemove);
-				System.out.println("Voulez vous vraiment le supprimer ?");
-				System.out.println("1) Oui");
-				System.out.println("2) Non");
-				String chooseContactRemoveConfirm = scanner.nextLine();
-				int chooseContactRemoveConfirm1 = Integer.parseInt(chooseContactRemoveConfirm);
-				if (chooseContactRemoveConfirm1 == 1) {
-					personnes.remove(chooseContactRemove1);
-					System.out.println("Voulez vous voir la liste des contacts ? ");
+
+				if (chooseContactRemove1 <= personnes.size()) {
+					System.out.println("Voulez vous vraiment le supprimer ?");
 					System.out.println("1) Oui");
 					System.out.println("2) Non");
-					String chooseViewContact = scanner.nextLine();
-					int chooseViewContact1 = Integer.parseInt(chooseViewContact);
-					if (chooseViewContact1 == 1) {
-						for (int i = 0; i < personnes.size(); i++) {
-							System.out.println("Contact n°" + i + personnes.get(i).toString());
+					String chooseContactRemoveConfirm = scanner.nextLine();
+					int chooseContactRemoveConfirm1 = Integer.parseInt(chooseContactRemoveConfirm);
+					if (chooseContactRemoveConfirm1 == 1) {
+						personnes.remove(chooseContactRemove1);
+						System.out.println("Voulez vous voir la liste des contacts ? ");
+						System.out.println("1) Oui");
+						System.out.println("2) Non");
+						String chooseViewContact = scanner.nextLine();
+						int chooseViewContact1 = Integer.parseInt(chooseViewContact);
+						if (chooseViewContact1 == 1) {
+							for (int i = 0; i < personnes.size(); i++) {
+								System.out.println("Contact n°" + i + personnes.get(i).toString());
+							}
+						} else if (chooseViewContact1 == 2) {
+							System.out.println("Vous avez été redirigé vers le menu principal");
+							System.out.println(" ");
 						}
-					} else if (chooseViewContact1 == 2) {
-						System.out.println("Vous avez été redirigé vers le menu principal");
-						System.out.println(" ");
+						returnMenu();
+						String chooseReturnMenu = scanner.nextLine();
+						int chooseReturnMenu1 = Integer.parseInt(chooseReturnMenu);
+						if (chooseReturnMenu1 == 2) {
+							System.out.println("Vous avez quitter le programme, à bientôt !");
+							System.out.println(" ");
+							break;
+						} else if (chooseReturnMenu1 != 1 && chooseReturnMenu1 != 2) {
+							System.out.println(
+									"La donnée saisie est invalide ! Vous allez être redirigé automatiquement vers le menu princiapal");
+							System.out.println(" ");
+						}
 					}
-					returnMenu();
-					String chooseReturnMenu = scanner.nextLine();
-					int chooseReturnMenu1 = Integer.parseInt(chooseReturnMenu);
-					if (chooseReturnMenu1 == 2) {
-						System.out.println("Vous avez quitter le programme, à bientôt !");
-						System.out.println(" ");
-						break;
-					} else if (chooseReturnMenu1 != 1 && chooseReturnMenu1 != 2) {
-						System.out.println(
-								"La donnée saisie est invalide ! Vous allez être redirigé automatiquement vers le menu princiapal");
-						System.out.println(" ");
-					}
+				} else {
+					System.out.println("Veuillez entrer un numéro de contact valide !");
 				}
+
 			} else if (chooseMenu1 == 5) {
 				System.out.println(" ");
 				System.out.println("Voulez vous voir la liste des contacts avant d'exporter votre liste ? ");
@@ -312,8 +324,11 @@ public class MainConsole {
 						System.out.println("Votre fichier a été créer !");
 						System.out.println(" ");
 					}
-
-				}
+				} else if (chooseExportList1 != 2 && chooseExportList1 != 1){
+					System.out.println("Veuillez entrer un choix valide !");
+				} 
+			} else {
+				System.out.println("Veuillez entrer un choix valide !");
 			}
 		}
 	}
