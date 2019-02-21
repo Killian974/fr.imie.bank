@@ -170,14 +170,9 @@ public class MainConsole {
 				int chooseContactModif1 = Integer.parseInt(chooseContactModif);
 
 				if (chooseContactModif1 <= personnes.size()) {
-					// INSERER LIGNE PERMETTANT DE MODIFIER
-//				System.out.println("Service en cours de développement, veuillez réessayer ultériement.");
-//				System.out.println(" ");
-
 					menuModifContact();
 					String chooseModifContact = scanner.nextLine();
 					int chooseModifContact1 = Integer.parseInt(chooseModifContact);
-
 					if (chooseModifContact1 == 2) {
 						System.out.println("Veuillez entrer le nouveau prénom :");
 						String changeFirstname = scanner.nextLine();
@@ -211,13 +206,11 @@ public class MainConsole {
 						System.out.println("L'Email a été changé !");
 						System.out.println(" ");
 					}
-
 					System.out.println("Voulez vous voir la liste des contacts ? ");
 					System.out.println("1) Oui");
 					System.out.println("2) Non");
 					String chooseViewContact = scanner.nextLine();
 					int chooseViewContact1 = Integer.parseInt(chooseViewContact);
-
 					if (chooseViewContact1 == 1) {
 						for (int i = 0; i < personnes.size(); i++) {
 
@@ -242,9 +235,10 @@ public class MainConsole {
 						System.out.println(" ");
 					}
 
-//				System.out.println(" ");
-//				System.out.println("Service en cours de développement, veuillez réessayer ultériement.");
-//				System.out.println(" ");
+					// System.out.println(" ");
+					// System.out.println("Service en cours de développement, veuillez réessayer
+					// ultériement.");
+					// System.out.println(" ");
 				} else {
 					System.out.println("Veuillez entrer un numéro de contact valide !");
 				}
@@ -281,6 +275,7 @@ public class MainConsole {
 							System.out.println("Vous avez été redirigé vers le menu principal");
 							System.out.println(" ");
 						}
+
 						returnMenu();
 						String chooseReturnMenu = scanner.nextLine();
 						int chooseReturnMenu1 = Integer.parseInt(chooseReturnMenu);
