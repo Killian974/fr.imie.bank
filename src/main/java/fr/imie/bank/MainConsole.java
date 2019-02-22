@@ -55,7 +55,7 @@ public class MainConsole {
 		LocalDate dateBirthUserOrigin1 = LocalDate.parse(dateBirthUserOrigin,
 				DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
-		Person personne1 = new Person("Jacquot", "Latrut", dateBirthUserOrigin1, "azert@gmail.com");
+		Person personne1 = new Person("Jaquot", "Latruite", dateBirthUserOrigin1, "jacquot.latruite@gmail.com");
 		Person personne2 = new Person("Jacques", "Sparrow", dateBirthUserOrigin1, "jacques.sparrow@gmail.com");
 		Person personne3 = new Person("Dominique", "Berret", dateBirthUserOrigin1, "dominique.berret@gmail.com");
 
@@ -115,8 +115,8 @@ public class MainConsole {
 
 				System.out.println("Veuillez entrez une date de naissance svp (au format suivant: JJ/MM/AAAA) :");
 //				String dateBirth = scanner.nextLine();
-				Scanner sc = new Scanner(System.in);
-				String dateBirth = sc.nextLine();
+
+				String dateBirth = scanner.nextLine();
 				LocalDate dateBirth1 = DateUtils.toDate(dateBirth);
 				
 				System.out.println("Veuillez saisir un Email svp :");
@@ -199,8 +199,8 @@ public class MainConsole {
 						
 						System.out.println("Veuillez entrer la nouvelle date de naissance :");
 //						String changeDateBirth = scanner.nextLine();
-						Scanner sc = new Scanner(System.in);
-						String changeDateBirth = sc.nextLine();
+
+						String changeDateBirth = scanner.nextLine();
 						LocalDate changeDateBirth1 = DateUtils.toDate(changeDateBirth);
 						personnes.get(chooseContactModif1).dateBirth = changeDateBirth1;
 						System.out.println("La date de naissance a été changé !");
@@ -297,7 +297,7 @@ public class MainConsole {
 				
 				if (chooseViewContact1 == 1) {
 					for (int i = 0; i < personnes.size(); i++) {
-						System.out.println("Contact n°" + i + personnes.get(i).toString());
+						System.out.println("Contact n°" + i +" :" + personnes.get(i).toString());
 					}
 				} else if (chooseViewContact1 != 1 && chooseViewContact1 != 2 ) {
 					System.out.println("Veuillez entrer un choix valide !");
@@ -310,13 +310,15 @@ public class MainConsole {
 				int chooseExportList1 = Integer.parseInt(chooseExportList);
 
 				if (chooseExportList1 == 1) {
-					FileWriter fileWriter = new FileWriter("MonFichier.csv", true);
+					FileWriter fileWriter = new FileWriter("MonFichier1.csv", true);
+					fileWriter.write("Compte ; Prénom ; Nom ; Date de naissance ; Email; \r\n");
 					for (int i = 0; i < personnes.size(); i++) {
-						fileWriter.append("aaaaaaaaaaaaaaaaa");
-						fileWriter.close();
-						System.out.println("Votre fichier a été créer !");
-						System.out.println(" ");
+						fileWriter.write(personnes.get(i).toString() + "\r\n");
 					}
+					fileWriter.close();
+					System.out.println("Votre fichier a été créer !");
+					System.out.println(" ");
+					
 				} else if (chooseExportList1 != 2 && chooseExportList1 != 1) {
 					System.out.println("Veuillez entrer un choix valide !");
 				}

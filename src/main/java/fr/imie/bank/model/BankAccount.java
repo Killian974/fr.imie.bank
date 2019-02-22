@@ -1,10 +1,14 @@
 package fr.imie.bank.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.imie.bank.model.Person;
 
-public class BankAccount extends Person {
-
+public class BankAccount {
+	private List<Person> personnes2 = new ArrayList<Person>();
 	private int number;
+	
 
 	public BankAccount(int number) {
 		super();
@@ -17,6 +21,14 @@ public class BankAccount extends Person {
 
 	public void setNumber(int number) {
 		this.number = number;
+	}
+
+	public List<Person> getPersonnes2() {
+		return personnes2;
+	}
+
+	public void setPersonnes2(List<Person> personnes2) {
+		this.personnes2 = personnes2;
 	}
 
 }

@@ -62,11 +62,11 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return " :  Compte = " + acount + " ,"
-								+ "		Prénom = " + firstname + ","
-								+ "		Nom = " + lastname + ", "
-								+ "		Date de naissance = "+ dateBirth + ","
-								+ "		Adresse Email = " + email + "";
+		return  acount + " ;"
+				 + firstname + ";"
+				 + lastname + "; "
+				+ dateBirth + ";"
+				+ email ;
 	}
 	
 	
