@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import fr.imie.bank.model.Person;
+import fr.imie.bank.DateUtils;
 
 public class MainConsole {
 
@@ -113,12 +114,15 @@ public class MainConsole {
 				String lastname = scanner.nextLine();
 
 				System.out.println("Veuillez entrez une date de naissance svp (au format suivant: JJ/MM/AAAA) :");
-				String dateBirth = scanner.nextLine();
-
+//				String dateBirth = scanner.nextLine();
+				Scanner sc = new Scanner(System.in);
+				String dateBirth = sc.nextLine();
+				LocalDate dateBirth1 = DateUtils.toDate(dateBirth);
+				
 				System.out.println("Veuillez saisir un Email svp :");
 				String email = scanner.nextLine();
-
-				LocalDate dateBirth1 = LocalDate.parse(dateBirth, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+				
+//				LocalDate dateBirth1 = LocalDate.parse(dateBirth, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 				Person personneAdd = new Person(firstname, lastname, dateBirth1, email);
 				personnes.add(personneAdd);
 				personneAdd = null;
@@ -192,10 +196,12 @@ public class MainConsole {
 						System.out.println("Le nom a été changé !");
 						System.out.println(" ");
 					} else if (chooseModifContact1 == 4) {
+						
 						System.out.println("Veuillez entrer la nouvelle date de naissance :");
-						String changeDateBirth = scanner.nextLine();
-						LocalDate changeDateBirth1 = LocalDate.parse(changeDateBirth,
-								DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+//						String changeDateBirth = scanner.nextLine();
+						Scanner sc = new Scanner(System.in);
+						String changeDateBirth = sc.nextLine();
+						LocalDate changeDateBirth1 = DateUtils.toDate(changeDateBirth);
 						personnes.get(chooseContactModif1).dateBirth = changeDateBirth1;
 						System.out.println("La date de naissance a été changé !");
 						System.out.println(" ");
@@ -213,10 +219,8 @@ public class MainConsole {
 					int chooseViewContact1 = Integer.parseInt(chooseViewContact);
 					if (chooseViewContact1 == 1) {
 						for (int i = 0; i < personnes.size(); i++) {
-
 							System.out.println("Contact n°" + i + personnes.get(i).toString());
 						}
-
 						returnMenu();
 						String chooseReturnMenu = scanner.nextLine();
 						int chooseReturnMenu1 = Integer.parseInt(chooseReturnMenu);
@@ -229,31 +233,21 @@ public class MainConsole {
 									"La donnée saisie est invalide ! Vous allez être redirigé automatiquement vers le menu princiapal");
 							System.out.println(" ");
 						}
-
 					} else if (chooseViewContact1 == 2) {
 						System.out.println("Vous avez été redirigé vers le menu principal");
 						System.out.println(" ");
 					}
-
-					// System.out.println(" ");
-					// System.out.println("Service en cours de développement, veuillez réessayer
-					// ultériement.");
-					// System.out.println(" ");
 				} else {
 					System.out.println("Veuillez entrer un numéro de contact valide !");
 				}
-			}
-
-			else if (chooseMenu1 == 4) {
+			} else if (chooseMenu1 == 4) {
 				for (int i = 0; i < personnes.size(); i++) {
 					System.out.println("Contact n°" + i + personnes.get(i).toString());
 				}
-
 				System.out.println(" ");
 				System.out.println("Veuillez saisir un le n° du contact que vous voulez supprimer :");
 				String chooseContactRemove = scanner.nextLine();
 				int chooseContactRemove1 = Integer.parseInt(chooseContactRemove);
-
 				if (chooseContactRemove1 <= personnes.size()) {
 					System.out.println("Voulez vous vraiment le supprimer ?");
 					System.out.println("1) Oui");
@@ -300,10 +294,13 @@ public class MainConsole {
 				System.out.println("2) Non");
 				String chooseViewContact = scanner.nextLine();
 				int chooseViewContact1 = Integer.parseInt(chooseViewContact);
+				
 				if (chooseViewContact1 == 1) {
 					for (int i = 0; i < personnes.size(); i++) {
 						System.out.println("Contact n°" + i + personnes.get(i).toString());
 					}
+				} else if (chooseViewContact1 != 1 && chooseViewContact1 != 2 ) {
+					System.out.println("Veuillez entrer un choix valide !");
 				}
 				System.out.println(" ");
 				System.out.println("Voulez vous exporter votre liste de contact en fichier .csv ?");
