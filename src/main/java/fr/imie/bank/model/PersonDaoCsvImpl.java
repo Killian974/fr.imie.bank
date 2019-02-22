@@ -40,5 +40,23 @@ public class PersonDaoCsvImpl implements PersonDao {
 	@Override
 	public void saveAll(List<Person> people) {
 		
+		FileWriter fileWriter = new FileWriter("MonFichier1.csv", true);
+		fileWriter.write("Compte ; Prénom ; Nom ; Date de naissance ; Email; \r\n");
+		for (int i = 0; i < personnes.size(); i++) {
+			fileWriter.write(personnes.get(i).toString() + "\r\n");
+		}
+		
+	}
+
+	@Override
+	public void deleteAll() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteById(int id) {
+		// TODO Auto-generated method stub
+		
 	}
 }
